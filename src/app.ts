@@ -15,8 +15,6 @@ const app = new Hono({ strict: true })
 process.on('uncaughtException', errorHandler.uncaughtExceptionHandler)
 process.on('unhandledRejection', errorHandler.unhandledRejectionHandler)
 
-
-
 app.use(async (c: Context, next: Next) => {
     if (!appArrays.nodeConfig.includes(process.env.NODE_ENV as string)) throwError("please add proper cred", appStatusCodes.BAD_GATEWAY as StatusCode)
     c.set('ip', ip.address('private', "ipv4"))
