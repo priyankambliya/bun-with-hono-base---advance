@@ -24,8 +24,10 @@ export const superAuth = () => {
             superAdminPassword = pass.toString()
             if ((superAdminEmail === process.env.SUPER_ADMIN_EMAIL) && (superAdminPassword === process.env.SUPER_ADMIN_PASSWORD)) {
                 console.log(`Website listening on port ${process.env.PORT}..`)
-                database.then(() => console.log('mongodb Connection established..')).catch(e => console.log('mongodb connection Failed for some reason..'))
-                stageDetector(projectStage)
+                database.then(() => {
+                    console.log('mongodb Connection established..')
+                    stageDetector(projectStage)
+                }).catch(e => console.log('mongodb connection Failed for some reason..'))
             } else {
                 throwError('Invalid credential..', appStatusCodes.UNAUTHORIZED as StatusCode)
                 rl.close()

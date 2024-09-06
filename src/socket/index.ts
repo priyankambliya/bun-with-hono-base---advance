@@ -1,7 +1,7 @@
 import { ServerWebSocket } from "bun";
 import Session from "../model/session.model";
 import encDec from "../utils/enc-dec";
-import { CustomServerWebSocket } from "..";
+import { CustomServerWebSocket } from "../server";
 
 interface UserSession {
     ws: ServerWebSocket
